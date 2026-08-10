@@ -2,39 +2,28 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Plano de Vidrio Templado v2 — Plantillas</title>
-<style>
-*{box-sizing:border-box}body{font-family:Segoe UI,Arial;margin:0;background:#eef1f5}
-.wrap{display:flex;gap:14px;padding:14px;align-items:flex-start}
-.panel{width:340px;background:#fff;border-radius:10px;padding:14px;box-shadow:0 1px 5px rgba(0,0,0,.12)}
-.panel h1{font-size:16px;margin:0 0 8px}
-label{display:block;font-size:11.5px;margin:7px 0 2px;color:#333}
-input,select,textarea{width:100%;padding:6px;border:1px solid #b9c2cc;border-radius:6px;font-size:13px}
-textarea{font-family:Consolas,monospace;font-size:12px}
-.row{display:flex;gap:8px}.row>div{flex:1}
-button{margin-top:10px;padding:9px 12px;border:0;border-radius:7px;background:#0b66c3;color:#fff;font-size:13px;cursor:pointer}
-button.gray{background:#5b6673}
-#hoja{flex:1;background:#fff;border-radius:10px;padding:12px;box-shadow:0 1px 5px rgba(0,0,0,.12)}
-#cajon svg{width:100%;height:auto}
-table{border-collapse:collapse;width:100%;font-size:12px;margin-top:8px}
-td,th{border:1px solid #999;padding:4px 6px;text-align:left}th{background:#f0f3f7}
-.hint{font-size:10.5px;color:#667;margin-top:4px}
-@media print{.panel{display:none}.wrap{padding:0}#hoja{box-shadow:none;border-radius:0}}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plano de Vidrio Templado — MundoCancel</title>
+<link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
 <div class="wrap">
-<div class="panel">
-<h1>📐 Plano de templado v2</h1>
-<label>🧩 Plantilla</label>
-<select id="tpl">
-<option value="libre">✏️ Libre / personalizado</option>
-<option value="pbis" selected>🚪 Puerta de baño (bisagras + manillón)</option>
-<option value="pcorr">↔️ Puerta corrediza de baño (kit riel)</option>
-<option value="fijo">🧱 Fijo de cancel (conectores)</option>
-<option value="barandal">🛡️ Fijo barandal (sin mecanizados)</option>
-</select>
-<div class="hint">Estándares: bisagras a 228.6 (9") de extremos · manillón Ø12 a 76.2 (3") del borde, inferior a 812.8 (32") · carretillas ø16/ø10 · conectores ø14/ø12.</div>
+
+  <div class="panel">
+    <h1>📐 Plano de templado</h1>
+
+    <label>🧩 Plantilla</label>
+    <select id="tpl"></select>
+    <div class="hint" id="hintTpl"></div>
+
+    <label>Cliente / Obra</label><input id="cliente">
+
+    <div class="row">
+      <div><label>Pieza</label><input id="pieza" value="V-01"></div>
+      <div><label>Cantidad</label><input id="cant" type="number" value="1"></div>
+    </div>
+    <div class="row">
+      <div><label>Ancho (mm)</label<div class="hint">Estándares: bisagras a 228.6 (9") de extremos · manillón Ø12 a 76.2 (3") del borde, inferior a 812.8 (32") · carretillas ø16/ø10 · conectores ø14/ø12.</div>
 <label>Cliente / Obra</label><input id="cliente">
 <div class="row"><div><label>Pieza</label><input id="pieza" value="V-01"></div>
 <div><label>Cantidad</label><input id="cant" type="number" value="1"></div></div>
