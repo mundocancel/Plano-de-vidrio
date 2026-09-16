@@ -1,0 +1,292 @@
+/* ==========================================================================
+   PLANO DE VIDRIO - ESTILO CUADERNO TÉCNICO / CAD BLUEPRINT
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES DEL TEMA (:root)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Cuaderno Técnico (Blue-Grid CAD) */
+  --color-fondo: #0d1b2a;                  /* Azul noche de fondo general */
+  --color-tarjeta: #1b263b;                /* Panel de controles y hoja */
+  --color-grid: rgba(65, 90, 119, 0.35);   /* Líneas de cuadrícula */
+  
+  --color-primario: #00b4d8;               /* Cian de cota y trazo principal */
+  --color-primario-hover: #90e0ef;
+  --color-secundario: #415a77;             /* Gris azulado para bordes */
+  
+  --color-texto: #e0e1dd;                  /* Texto claro de lectura */
+  --color-texto-suave: #778da9;            /* Acotaciones y secundarias */
+  --color-acento: #ff4d6d;                 /* Perforaciones, resaques y alertas */
+  --color-vidrio: rgba(0, 180, 216, 0.12);  /* Tono cristal sobre rejilla */
+
+  /* Tipografía Industrial / CAD */
+  --fuente: "Consolas", "Courier New", "Fira Code", monospace;
+  --fuente-ui: "Segoe UI", system-ui, sans-serif;
+  
+  /* Dimensiones y estructura */
+  --radio: 4px;
+  --sombra: 0 4px 20px rgba(0, 0, 0, 0.5);
+  --ancho-panel: 340px;
+  --espacio: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESETS Y BASE
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--fuente);
+  background-color: var(--color-fondo);
+  background-image: 
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--color-texto);
+  line-height: 1.4;
+}
+
+.wrap {
+  display: flex;
+  gap: var(--espacio);
+  padding: var(--espacio);
+  align-items: flex-start;
+}
+
+/* --------------------------------------------------------------------------
+   3. FORMULARIO Y CONTROLES DEL PANEL
+   -------------------------------------------------------------------------- */
+label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 10px 0 3px;
+  color: var(--color-texto-suave);
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-secundario);
+  border-radius: var(--radio);
+  font-size: 12px;
+  font-family: var(--fuente);
+  background: rgba(13, 27, 42, 0.8);
+  color: var(--color-primario);
+  transition: border-color .15s, box-shadow .15s;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 8px rgba(0, 180, 216, 0.4);
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-primario);
+  border-radius: var(--radio);
+  background: rgba(0, 180, 216, 0.15);
+  color: var(--color-primario);
+  font-size: 12px;
+  font-family: var(--fuente);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+button:hover { 
+  background: var(--color-primario); 
+  color: var(--color-fondo);
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.5);
+}
+
+button:active { 
+  transform: scale(0.98); 
+}
+
+button.gray { 
+  border-color: var(--color-secundario);
+  background: rgba(65, 90, 119, 0.2);
+  color: var(--color-texto);
+}
+
+button.gray:hover { 
+  background: var(--color-secundario);
+  color: #ffffff;
+}
+
+.row { 
+  display: flex; 
+  gap: 8px; 
+}
+
+.row > div { 
+  flex: 1; 
+}
+
+.hint { 
+  font-size: 10px; 
+  color: var(--color-texto-suave); 
+  margin-top: 4px; 
+}
+
+/* --------------------------------------------------------------------------
+   4. ESTRUCTURA (PANEL CONTROLES Y HOJA TÉCNICA)
+   -------------------------------------------------------------------------- */
+.panel {
+  width: var(--ancho-panel);
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-secundario);
+  border-radius: var(--radio);
+  padding: var(--espacio);
+  box-shadow: var(--sombra);
+}
+
+.panel h1 {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-primario);
+  border-bottom: 1px dashed var(--color-secundario);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.panel h1::before {
+  content: "📐 [CAD] ";
+}
+
+#hoja {
+  flex: 1;
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-secundario);
+  border-radius: var(--radio);
+  padding: 16px;
+  box-shadow: var(--sombra);
+  min-width: 0;
+  /* Rejilla interna milimétrica fina */
+  background-image: 
+    linear-gradient(rgba(65, 90, 119, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(65, 90, 119, 0.2) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+#cajon svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --------------------------------------------------------------------------
+   5. TABLAS DE MECANIZADOS Y DATOS
+   -------------------------------------------------------------------------- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 11px;
+  margin-top: 12px;
+  background: rgba(13, 27, 42, 0.5);
+}
+
+td, th {
+  border: 1px solid var(--color-secundario);
+  padding: 6px 8px;
+  text-align: left;
+}
+
+th {
+  background: rgba(65, 90, 119, 0.3);
+  color: var(--color-primario);
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVO (MÓVILES)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .wrap { 
+    flex-direction: column; 
+  }
+  .panel { 
+    width: 100%; 
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. REGLAS DE IMPRESIÓN (MEMBRETE B&N PARA TALLER / PDF)
+   -------------------------------------------------------------------------- */
+@media print {
+  @page { 
+    size: A4 portrait; 
+    margin: 8mm; 
+  }
+
+  body { 
+    background: #ffffff !important; 
+    color: #000000 !important;
+  }
+  
+  .panel { 
+    display: none !important; 
+  }
+
+  .wrap { 
+    padding: 0; 
+    gap: 0; 
+  }
+
+  #hoja {
+    box-shadow: none;
+    border: 2px solid #000000;
+    border-radius: 0;
+    width: 100%;
+    padding: 10mm;
+    background: #ffffff !important;
+  }
+
+  #hoja::before {
+    content: "MUNDOCANCEL — PLANO TÉCNICO DE VIDRIO TEMPLADO";
+    display: block;
+    font-family: var(--fuente);
+    font-size: 14pt;
+    font-weight: bold;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+    color: #000000;
+  }
+
+  table { 
+    border-color: #000000; 
+  }
+  
+  td, th { 
+    border-color: #000000; 
+    color: #000000; 
+  }
+  
+  th { 
+    background: #eeeeee !important; 
+  }
+  
+  #cajon svg { 
+    page-break-inside: avoid; 
+  }
+}

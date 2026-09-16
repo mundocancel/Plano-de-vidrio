@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plano de Vidrio — MundoCancel</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <div class="wrap">
+    <!-- Panel de controles -->
+    <aside class="panel">
+      <h1>Plano de templado</h1>
+
+      <label>🧩 Plantilla</label>
+      <select id="tpl"></select>
+      <div class="hint" id="hintTpl"></div>
+
+      <label>Cliente / Obra</label>
+      <input id="cliente" placeholder="Ej: Casa Ramírez">
+
+      <div class="row">
+        <div>
+          <label>Pieza</label>
+          <input id="pieza" value="V-01">
+        </div>
+        <div>
+          <label>Cantidad</label>
+          <input id="cant" type="number" value="1" min="1">
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Ancho (mm)</label>
+          <input id="ancho" type="number" value="650" min="100">
+        </div>
+        <div>
+          <label>Alto (mm)</label>
+          <input id="alto" type="number" value="1900" min="100">
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Espesor</label>
+          <select id="esp">
+            <option>6 mm</option>
+            <option>8 mm</option>
+            <option selected>10 mm</option>
+            <option>12 mm</option>
+          </select>
+        </div>
+        <div>
+          <label>Color</label>
+          <select id="color">
+            <option>Claro</option>
+            <option>Gris</option>
+            <option>Bronce</option>
+            <option>Extra claro</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Cantos</label>
+      <select id="cantos">
+        <option selected>Pulido (resaque de cantos)</option>
+        <option>Pulido fino</option>
+        <option>Biselado</option>
+        <option>Corte crudo</option>
+      </select>
+
+      <label>Perforaciones (X, Y, Ø) — una por línea</label>
+      <textarea id="perf" rows="3" placeholder="100, 100, 12"></textarea>
+
+      <label>Resaques — B,lado(D/I),ref(T/B),dist,alto,prof,R</label>
+      <textarea id="mues" rows="3" placeholder="B,I,T,228.6,60,30,8"></textarea>
+
+      <label>Herrajes sugeridos</label>
+      <textarea id="herr" rows="2"></textarea>
+
+      <label>Observaciones</label>
+      <textarea id="obs" rows="2">Vidrio templado. Mecanizados ANTES de templar.</textarea>
+
+      <button onclick="App.imprimir()">🖨 Imprimir / PDF</button>
+      <button class="gray" onclick="App.dxf()">⬇ Exportar DXF</button>
+    </aside>
+
+    <!-- Hoja técnica -->
+    <main id="hoja">
+      <div id="cajon"></div>
+      <div id="tabla"></div>
+    </main>
+  </div>
+
+  <script src="js/plantillas.js"></script>
+  <script src="js/dibujo.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
